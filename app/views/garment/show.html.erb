@@ -1,0 +1,63 @@
+<div class="showgarment_container container-fliud">
+  <div class="row">
+  
+      
+      <div id="showgarment_img">
+        <% if @garment.image.to_s.empty? %>
+            <img src="/images/notavailable.png" style="width: 480px; height: 480px;" class="img-thumbnail">
+        <% else %>
+          <img src="<%= @garment.image%>" style="width: 480px; height: 480px;" class="img-thumbnail">
+        <% end %>  
+        <div id="multi_img">
+          <% if @garment.image.to_s.empty? %>
+              <img src="/images/notavailable.png" style="width: 100px; height: 100px; margin-left: 0.5em; margin-top: 0.5em" class="img-thumbnail " >
+           <% else %>  
+            <img src="<%= @garment.image%>" style="width: 100px; height: 100px;" class="img-thumbnail" id="img_smallshow">
+           <% end %> 
+        </div>
+      </div>
+
+      
+      <div class="showgarment_content">
+        <div class="panel panel-default" id="showgarment_details">
+      <!-- Default panel contents -->
+        <div class="panel-heading" style="font-size: 18px; "><%= @garment.garment_name.capitalize%></div>
+        <div class="panel-body">
+        <p>DESCRIPTION: <%= @garment.description%></p>
+        </div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">Brand:    <%= @garment.brand%></li>
+        <li class="list-group-item">Size:     <%= @garment.size%></li>
+        <li class="list-group-item">Status:   <%= @garment.status%></li>
+        <li class="list-group-item">Buy in:   <%= @garment.buy_value%></li>   
+        <li class="list-group-item">Date:     <%= @garment.buy_date%></li>
+        <li class="list-group-item">Sold on:  <%= @garment.sold_value%></li>   
+        <li class="list-group-item">Record on: <%= @garment.record_date%></li>
+        
+      </ul>
+    </div>
+       <div class="act_forms">
+       <!-- two buttons for update and delete   -->
+       <div class="update">
+       <a href="/garment/<%= @garment.id%>/edit" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update
+       </a>
+       </div>
+      
+    <!--     <button class="btn btn-default btn-lg"> -->
+      <div class="delete">
+      <form action="/garment/destroy/<%= @garment.id%>" method=post>
+      <input type="hidden" name="_method" value="delete">
+        <button class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove</button> 
+       </form>
+        </div>
+
+       </div>
+      </div>
+
+    </div>
+
+
+</div>

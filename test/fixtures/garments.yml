@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  garment_name: MyString
+  status: MyString
+  brand: MyString
+  size: MyString
+  buy_value: 
+  sold_value: 
+  buy_date: 2016-02-01
+  record_date: 2016-02-01
+  user_id: 1
+  category_id: 1
+  description: MyString
+  image: MyString
+
+two:
+  garment_name: MyString
+  status: MyString
+  brand: MyString
+  size: MyString
+  buy_value: 
+  sold_value: 
+  buy_date: 2016-02-01
+  record_date: 2016-02-01
+  user_id: 1
+  category_id: 1
+  description: MyString
+  image: MyString

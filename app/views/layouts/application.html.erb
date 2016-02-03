@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY WARDROBE</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+ <%= stylesheet_link_tag "application"%>
+<!-- for the image drap and drop boxes-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+  });
+  </script>
+
+</head>
+<body style="overflow: auto; paddding: 0; margin: 0; height: 100%;" id="body">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+ <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"><a href="/show">WARDROBE <span class="sr-only">(current)</span></a></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <div id="the_logo">
+        <a class="navbar-brand" href="/" style="font-family: 'Pacifico', cursive;"><span class="glyphicon glyphicon-queen" aria-hidden="true"></span>MY WARDROBE </a>
+       </div>
+        
+      </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/show">WARDROBE <span class="sr-only">(current)</span></a></li>
+        <li><a href="/garment/new">NEW GARMENT</a></li>
+      </ul>
+<% if log_in? %>
+ <ul class="nav navbar-nav navbar-right">
+        <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.username%></li>
+      <form action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <li ><button class="btn btn-default" style="width: 70px; height:25px; font-size:10px;margin-right: 10px">LOG OUT</button> </li>
+      </form>    
+  </ul>
+<% else%>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/signin">LOG IN</a></li>
+        <li><a href="/regi">SIGN UP</a></li>
+      </ul>
+<% end%>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+  <%= yield %>
+
+ 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>

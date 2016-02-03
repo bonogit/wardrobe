@@ -1,0 +1,2 @@
+module GarmentHelper
+end
