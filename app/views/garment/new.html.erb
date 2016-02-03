@@ -1,7 +1,7 @@
 <div class="addgarment_container">
     <h3>Details for your new garment!</h3>
 <form action="/garment" method="post">
-    
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <div class="panel panel-default" id="addgarment_details">
   <!-- List group -->

@@ -2,7 +2,7 @@
  
   <form action="/garment/<%= @garment.id%>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="_method" value="put">
-
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <div class="showgarment_img">
      <% if @garment.image.to_s.empty? %>
         <img src="/images/notavailable.png" style="width: 480px; height: 480px;" class="img-thumbnail">
@@ -73,6 +73,7 @@
        <div class="delete">
           <form action="/garment/<%= @garment.id%>" method=post>
           <input type="hidden" name="_method" value="delete">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <button class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove</button> 
            </form>

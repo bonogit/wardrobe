@@ -47,8 +47,9 @@
       
     <!--     <button class="btn btn-default btn-lg"> -->
       <div class="delete">
-      <form action="/garment/destroy/<%= @garment.id%>" method=post>
+      <form action="/garment/<%= @garment.id%>" method=post>
       <input type="hidden" name="_method" value="delete">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <button class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove</button> 
        </form>

@@ -24,7 +24,7 @@ class GarmentController < ApplicationController
       @gar.image = params[:update_image]
       @gar.category_id = params[:category_id]
       @gar.save
-      redirect to '/garment/params[:id]'
+      redirect_to "/garment/#{params[:id]}"
   end
 
   def create
@@ -44,11 +44,11 @@ class GarmentController < ApplicationController
       # puts params[:add_image]
       @addgarment.category_id = params[:category_id]
       @addgarment.save
-      redirect to '/show'
+      redirect_to '/show'
   end
 
   def destroy
       Garment.find(params[:id]).destroy
-      redirect to '/show'
+      redirect_to '/show'
   end
 end

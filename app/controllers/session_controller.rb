@@ -6,15 +6,15 @@ class SessionController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/show'
+      redirect_to '/show'
     else
-      redirect to '/signin'
+      redirect_to '/signin'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/about'
+    redirect_to '/'
   end
 
   def show_regi
@@ -30,6 +30,6 @@ class SessionController < ApplicationController
      @newuser.email = params[:email]
      @newuser.password = params[:password]
      @newuser.save
-     redirect to '/show'
+     redirect_to '/signin'
   end
 end
