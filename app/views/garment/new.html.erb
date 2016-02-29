@@ -1,6 +1,9 @@
 <div class="addgarment_container">
+
     <h3>Details for your new garment!</h3>
-<form action="/garment" method="post">
+  
+<!-- <form action="/garment" method="post"> -->
+    <%= form_for @garment, url: {action: "create"}, html: {multipart: true} do |g| %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <div class="panel panel-default" id="addgarment_details">
@@ -9,44 +12,56 @@
        <li class="list-group-item">
            <div class="input-group">
               <span class="input-group-addon" id="basic-addon1" >Name</span>
-               <input type="text" name="garment_name" class="form-control" placeholder="name" aria-describedby="basic-addon1">
+          <!--      <input type="text" name="garment_name" class="form-control" placeholder="name" aria-describedby="basic-addon1"> -->
+          <%= g.text_field :garment_name, class: "form-control", placeholder: "garment name"%>
           </div>
         </li>
         <li class="list-group-item">
            <div class="input-group">
              <span class="input-group-addon" id="basic-addon1" >Description</span>
-             <input type="text" name="description" class="form-control" placeholder="description" aria-describedby="basic-addon1">
+ <!--             <input type="text" name="description" class="form-control" placeholder="description" aria-describedby="basic-addon1"> -->
+            <%= g.text_field :description, class: "form-control", placeholder: "description"%>
           </div>
         </li>
 
         <li class="list-group-item">
            <div class="input-group">
              <span class="input-group-addon" id="basic-addon1">Brand</span>
-             <input type="text" name="brand" class="form-control" placeholder="brand" aria-describedby="basic-addon1">
+         <!--     <input type="text" name="brand" class="form-control" placeholder="brand" aria-describedby="basic-addon1"> -->
+         <%= g.text_field :brand, placeholder: "brand" ,class: "form-control"%>
           </div>
         </li>
 
         <li class="list-group-item">
            <div class="input-group">
              <span class="input-group-addon" id="basic-addon1">Category</span>
-             <select name="category_id" id="" class="form-control" aria-describedby="basic-addon1">
+       <!--       <select name="category_id" id="" class="form-control" aria-describedby="basic-addon1">
               <% @category.each do |cat| %>
               <option value="<%= cat.id%>"><%= cat.lvl1 %></option>
               <% end %> 
-           </select>
+           </select> -->
+            <%= g.select (:category_id) do%>
+              <% @category.each do |cat|%>
+              <%= content_tag(:option, cat.lvl1, value: cat.id)%>
+              <% end %>
+            <% end %>
+
           </div>
         </li>
 
         <li class="list-group-item">
            <div class="input-group">
              <span class="input-group-addon" id="basic-addon1">Size</span>
-             <input type="text" name="size" class="form-control" placeholder="size" aria-describedby="basic-addon1">
+          <!--    <input type="text" name="size" class="form-control" placeholder="size" aria-describedby="basic-addon1"> -->
+               <%= g.text_field :size, placeholder: "size" ,class: "form-control"%>
+          </div>
           </div>
         </li>
         <li class="list-group-item">
            <div class="input-group">
              <span class="input-group-addon" id="basic-addon1">Status</span>
              <input type="text" name="status" class="form-control" placeholder="status" aria-describedby="basic-addon1">
+    
           </div>
         </li>
         <li class="list-group-item">
@@ -69,14 +84,15 @@
           </li>
            <li class="list-group-item">
              <div class="input-group">
-               <input type="file" name="add_image" class="form-control"  aria-describedby="basic-addon1">
+
+               <span class="input-group-addon" id="basic-addon1">Upload Photos</span><%= g.file_field :image%>
              </div>
           </li>
    </ul>
   </div>
 
-   <!-- two buttons for update and delete   -->
-    <button  class="btn btn-default btn-lg">
+    <button  type="submit" class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New</button>
-  </form>
+  <!-- </form> -->
+  <% end %>
 </div>

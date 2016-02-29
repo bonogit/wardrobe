@@ -1,6 +1,7 @@
 class GarmentController < ApplicationController
   def new
      @category = Category.all
+     @garment =Garment.new
   end
 
   def show
@@ -28,27 +29,38 @@ class GarmentController < ApplicationController
   end
 
   def create
-      @addgarment = Garment.new
-      @addgarment.garment_name = params[:garment_name]
-      @addgarment.description = params[:description]
-      @addgarment.brand = params[:brand]
-      @addgarment.size = params[:size]
-      @addgarment.status = params[:status]
-      @addgarment.buy_value = params[:buy_value]
-      @addgarment.buy_date = params[:buy_date]
-      @addgarment.sold_value = params[:sold_value]
-      @addgarment.record_date = Date.today
+      # @addgarment = Garment.new
+      # @addgarment.garment_name = params[:garment_name]
+      # @addgarment.description = params[:description]
+      # @addgarment.brand = params[:brand]
+      # @addgarment.size = params[:size]
+      # @addgarment.status = params[:status]
+      # @addgarment.buy_value = params[:buy_value]
+      # @addgarment.buy_date = params[:buy_date]
+      # @addgarment.sold_value = params[:sold_value]
+      # @addgarment.record_date = Date.today
       # @addgarment.user_id = current_user.id
-      # @addgarment.user_id = 1
-      @addgarment.image = params[:add_image]
-      # puts params[:add_image]
-      @addgarment.category_id = params[:category_id]
-      @addgarment.save
-      redirect_to '/show'
+      # # @addgarment.user_id = 1
+      # @addgarment.image = params[:add_image]
+      # # puts params[:add_image]
+      # @addgarment.category_id = params[:category_id]
+      @garment = Garment.new(addgarment_params)
+      # binding.pry
+      if @garment.save
+        redirect_to '/show', notice: "New Garment #{@garment.garment_name} has been uploaded."
+      else
+        redirect_to '/garment/new'
+      end
   end
 
   def destroy
-      Garment.find(params[:id]).destroy
-      redirect_to '/show'
+      @garment = Garment.find(params[:id])
+      @garment.destroy
+      redirect_to '/show', notice: "The garment #{@garment.name} has been deleted."
+  end
+
+  private
+  def addgarment_params
+    params.require(:garment).permit(:garment_name, :description, :brand, :image, :category_id)
   end
 end

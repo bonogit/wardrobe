@@ -13,16 +13,26 @@
  *= require_tree .
  *= require_self
  */
-#body {
+/* @import "bootstrap-sprokets";
+ @import "bootstrap";*/
+body {
   font-family: Arial,"Lucida Sans Unicode","Lucida Grande", sans=serif;
-  text-align: left;
-  font-size: 15px;
+  font-size: 1em;
   color: black;
   line-height: 1.45;
   position: relative;
   background-color: #eee;
   display: block;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
+
+.navbar{
+  font-size: 2.5em;
+}
+
 
 .formcontainer{
   display: flex;
@@ -51,11 +61,7 @@
   margin-right: 30px;
 }
 #inner_cont {
-  width: 50%;
-  padding: 20px;
-  resize: both;
-  overflow: auto;
-  z-index: 50;
+  margin-top: 10em;
 }
 div.cover {
  background-color: rgba(255, 255, 255, 0.5);
@@ -64,7 +70,7 @@ div.cover {
 
 img.cover {
   /* Set rules to fill background */
-  min-height: 100%;
+  min-height: 92%;
   min-width: 1024px;
   
   /* Set up proportionate scaling */
@@ -193,6 +199,7 @@ img.cover {
   margin-top: 80px;
   width: 50%;
   margin-left: 15%;
+  font-size: 3em;
    /*border: solid gray 1px;*/
 }
 .update{
@@ -234,4 +241,18 @@ img.cover {
 
 .droppable{
   border-radius: 3px;
+}
+
+/*footer style*/
+footer{
+  background-color: #343434;
+   color: #fff;
+   font-size: 2em;
+   position: fixed;
+   bottom: 0;
+   height: 8%;
+   width: 100%;
+}
+footer ul {
+  font-size: 1.5em;
 }
