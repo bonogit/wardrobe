@@ -1,3 +1,38 @@
 // Place all the styles related to the Session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.form-horizontal {
+  margin-top: 80px;
+  width: 50%;
+  margin-left: 15%;
+  font-size: 3em;
+}
+.update{
+  display: inline-block;
+}
+.delete{
+  display: inline-block;
+}
+
+.regi_title {
+	margin-top: 3em;
+}
+
+.regi_form {
+	margin-top: -5em;
+}
+.regi_form control-label {
+	text-align: left;
+	text-align: -webkit-left;
+}
+
+.sign_title {
+	margin-top: 3em;
+}
+
+.sign_form {
+	margin-top: -5em;
+}
+

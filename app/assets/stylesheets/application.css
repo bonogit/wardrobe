@@ -200,6 +200,7 @@ img.cover {
   width: 50%;
   margin-left: 15%;
   font-size: 3em;
+  font-family: 
    /*border: solid gray 1px;*/
 }
 .update{
@@ -242,7 +243,15 @@ img.cover {
 .droppable{
   border-radius: 3px;
 }
-
+.profile_body {
+  margin-top: 10em;
+}
+.profile_details {
+  font-size: 3em;
+}
+.profile_details li {
+  border-bottom: solid 1px gainsboro;
+}
 /*footer style*/
 footer{
   background-color: #343434;
@@ -250,9 +259,16 @@ footer{
    font-size: 2em;
    position: fixed;
    bottom: 0;
-   height: 8%;
+   height: 7%;
    width: 100%;
 }
 footer ul {
   font-size: 1.5em;
+  padding-top: 0.1em;
+  margin-bottom: 0.1em;
 }
+footer p {
+  margin-top: -0.2em;
+}
+
+

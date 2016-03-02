@@ -1,0 +1,12 @@
+<% if @newuser.errors.any? %>
+	<div id='error_explanation'>
+		<div class='alert alert-danger'>
+			Your sign up contains <%= pluralize(@newuser.errors.count, "error")%>! Please sign up again.
+		</div>
+		<ul>
+			<% @newuser.errors.full_messages.each do |msg|%>
+			<li><%= msg%></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

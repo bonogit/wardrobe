@@ -1,0 +1,20 @@
+<div class='container profile_body'>
+	<div class='row'>
+		<div class='col-md-4'>
+			
+			<h2> <%= gravatar_for @currentUser%>
+				
+			<%= @currentUser.username%></h2>
+		</div>
+		<div class='col-md-8 profile_details'>
+			<div> User Email: <%= @currentUser.email%></div>
+			<div> To change password</div>
+			<div> some statistic</div>
+			<ul>
+				<li>Number of total garments</li>
+				<li>total number in stock/ total number sold</li>
+				<li>total money spend in year 2015/ total money income</li>
+			</ul>
+		</div>
+	</div>
+</div>

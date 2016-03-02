@@ -18,7 +18,7 @@ class SessionController < ApplicationController
   end
 
   def show_regi
-    
+    @newuser = User.new
   end
 
   def show_signin
@@ -26,10 +26,22 @@ class SessionController < ApplicationController
   end
   def create_user
      @newuser = User.new
-     @newuser.username = params[:user]
+     @newuser.username = params[:username]
      @newuser.email = params[:email]
      @newuser.password = params[:password]
-     @newuser.save
-     redirect_to '/signin'
+     if @newuser.save
+        flash[:success] = "You have sign up! Sign in to your wardrobe."
+        redirect_to '/signin'
+      else
+        render 'show_regi'
+      end
   end
+  def show_profile
+     @currentUser = User.find(params[:id])
+  end
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :email, :password, :password_confirm)
+    end
 end
