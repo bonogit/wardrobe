@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
  
 # use carrierwave for upload files
 gem 'carrierwave'
-
+gem 'mini_magick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

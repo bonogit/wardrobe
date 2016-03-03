@@ -22,11 +22,9 @@
      <div id="display_imgs">
       <% @garments.each do |gar| %>
         <a href="/garment/<%= gar.id %>" title="<%= gar.garment_name%>" class="grid_display"> 
-          <% if gar.image.to_s.empty? %>
-            <img src="/images/notavailable.png" class="img-rounded ui-widget-content draggable">
-          <% else%>
-            <img src=" <%= gar.image %>" class="img-rounded ui-widget-content draggable">
-          <% end %>
+
+            <img src=" <%= gar.image.thumb.url %>" class="img-rounded ui-widget-content draggable">
+          
 
          </a>
        <% end %>

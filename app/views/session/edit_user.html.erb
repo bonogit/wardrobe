@@ -1,0 +1,44 @@
+<h1 class='text-center update_title'>Update your profile</h1>
+
+<div class='row'>
+	<div class='col-md-6 col-md-offset-3'>
+		  <form class="form-horizontal" action="/edit/:id" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		      <%= render 'shared/error_msg' %>
+			<div class="form-group">
+                <label for="inputUsername" class="col-md-3 control-label">User Name</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="<%= @newuser.username%>" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" placeholder="<%= @newuser.email%>" name="email">
+              </div>
+            </div>
+      		 <div class="form-group">
+	              <label for="inputPassword" class="col-sm-3 control-label">New Password</label>
+	              <div class="col-sm-9">
+	                <input type="password" class="form-control" placeholder="New Password" name="password">
+	              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password_confirmation" class="col-sm-3 control-label">Confirmation</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" placeholder="Password Confirmation" name="password-confirmation">
+              </div>
+            </div>
+			<div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+		</form>
+		<div class="gravatar_edit">
+	      <%= gravatar_for @newuser %>
+	      <a href="http://gravatar.com/emails" target="_blank">change</a>
+	    </div>
+	</div>
+</div>

@@ -51,21 +51,32 @@
         <li class="active"><a href="/show">WARDROBE <span class="sr-only">(current)</span></a></li>
         <li><a href="/garment/new">NEW GARMENT</a></li>
       </ul>
-<% if log_in? %>
- <ul class="nav navbar-nav navbar-right">
-        <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.username%></li>
-      <form action="/session/<%= current_user.id%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <li ><button class="btn btn-default" style="width: 70px; height:25px; font-size:10px;margin-right: 10px">LOG OUT</button> </li>
-      </form>    
-  </ul>
-<% else%>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signin">LOG IN</a></li>
-        <li><a href="/regi">SIGN UP</a></li>
-      </ul>
-<% end%>
+
+      <% if log_in? %>
+       <ul class="nav navbar-nav navbar-right">
+          <li class='user_login'><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.username%></li>
+          <li class='dropdown'>
+            <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Account <b class='caret'></b> </a>
+            <ul class='dropdown-menu'>
+              <li>  <a href="/profile/<%= current_user.id%>">Profile</a></li>
+              <li><a href="#">Settings </a></li>
+              <li class='divider'></li>
+              <li class="log_out">  
+                <form action="/session/<%= current_user.id%>" method="post" id="logout_form">
+                    <input type="hidden" name="_method" value="delete">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                    <a href="javascript:void()" onclick="document.getElementById('logout_form').submit();">Log out</a> 
+                </form> 
+              </li>   
+            </ul>
+          </li>  
+        </ul>
+      <% else%>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/signin">LOG IN</a></li>
+              <li><a href="/regi">SIGN UP</a></li>
+            </ul>
+      <% end%>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -90,5 +101,5 @@
     
   </div>
 </footer>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>

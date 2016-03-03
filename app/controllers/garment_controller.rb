@@ -1,4 +1,6 @@
 class GarmentController < ApplicationController
+
+
   def new
      @category = Category.all
      @garment =Garment.new
@@ -24,8 +26,12 @@ class GarmentController < ApplicationController
       @gar.sold_value = params[:sold_value]
       @gar.image = params[:update_image]
       @gar.category_id = params[:category_id]
-      @gar.save
-      redirect_to "/garment/#{params[:id]}"
+      if @gar.save
+        redirect_to "/garment/#{params[:id]}"
+      else 
+        flash[:danger] = "Garment update failed. Please try again."
+        redirect_to "/garment/#{params[:id]}"
+      end
   end
 
   def create
@@ -46,9 +52,14 @@ class GarmentController < ApplicationController
       # @addgarment.category_id = params[:category_id]
       @garment = Garment.new(addgarment_params)
       # binding.pry
+      if view_context.log_in?
+        @garment.user_id = view_context.current_user.id
+      end
+      @garment.record_date = Date.today
       if @garment.save
-        redirect_to '/show', notice: "New Garment #{@garment.garment_name} has been uploaded."
+        redirect_to '/show'
       else
+        flash[:danger] = "Create new garment not successful! Please try again."
         redirect_to '/garment/new'
       end
   end
@@ -56,11 +67,15 @@ class GarmentController < ApplicationController
   def destroy
       @garment = Garment.find(params[:id])
       @garment.destroy
-      redirect_to '/show', notice: "The garment #{@garment.name} has been deleted."
+      redirect_to '/show'
   end
 
   private
   def addgarment_params
-    params.require(:garment).permit(:garment_name, :description, :brand, :image, :category_id)
+    params.require(:garment).permit(:garment_name, :description, :brand,:size,
+      :status,:buy_value,:buy_date,:sold_value, :image, :category_id)
+  end
+  def image_size_validation
+    errors[:image] << "should be less than 5000KB" if image.size > 5.megabytes
   end
 end

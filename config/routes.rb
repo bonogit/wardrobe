@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   get '/signin' => 'session#show_signin'
   post '/regi/newuser' => 'session#create_user'
   get '/profile/:id' => 'session#show_profile'
-
+  get '/edit/:id' => 'session#edit_user'
   resources :garment
   resources :session
 end

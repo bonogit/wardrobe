@@ -8,6 +8,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/show'
     else
+      flash[:danger] = "Invalid user name/incorrect password combination!"
       redirect_to '/signin'
     end
   end
@@ -35,6 +36,14 @@ class SessionController < ApplicationController
       else
         render 'show_regi'
       end
+  end
+  def edit_user
+    @newuser = User.find(params[:id])
+    if @newuser.update_attributes(username: params[:username], email: params[:email], password: params[:password])
+      redirect_to "/profile/#{params[:id]}"
+    else
+      
+    end
   end
   def show_profile
      @currentUser = User.find(params[:id])
